@@ -1,0 +1,1 @@
+SELECT name,price FROM phones where units_sold>5000;
