@@ -163,3 +163,40 @@ select url,username from photos join users on users.id=photos.user_id;
 insert into photos(url,user_id) values('http://banner.jpg',NULL);
 
 select url,username from photos join users on users.id=photos.user_id;
+
+select url,username from photos left join users on users.id=photos.user_id;
+
+select url,username from photos right join users on users.id=photos.user_id;
+select url,username from photos full join users on users.id=photos.user_id;
+
+select url,username from photos left join users on users.id=photos.user_id;
+select url,username from users left join photos on users.id=photos.user_id;
+
+select url,contents,username from comments join photos on photos.id=comments.photo_id join users on users.id=comments.user_id and users.id=photos.user_id;  
+
+select user_id from comments group by user_id;
+select sum(id) from comments;
+select count(id) from comments;
+select max(photo_id) from comments;
+select min(photo_id) from comments;
+select avg(id) from comments;
+select user_id,max(id) from comments group by user_id;
+select user_id,count(id) as num_comments_created from comments group by user_id;
+
+INSERT into photos(url,user_id) VALUES('http://null.jpg',NULL);
+select * from photos;
+
+select user_id,count(user_id) from photos group by user_id;
+select user_id,count(*) from photos group by user_id;
+
+select user_id,count(*) from comments group by user_id;
+
+select user_id,count(user_id) from comments group by user_id;
+
+select photo_id,count(*) as no_of_comments from comments group by photo_id;
+select photo_id,count(id) as no_of_comments from comments group by photo_id;
+
+select photo_id,count(*) from comments where photo_id<3 group by photo_id having count(*)>2;
+
+select user_id,count(*) from comments where photo_id<2 group by user_id having count(*)>2;
+select user_id,count(*) from comments where photo_id<50 group by user_id having count(*)>20;

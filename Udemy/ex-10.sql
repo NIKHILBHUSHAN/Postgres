@@ -1,0 +1,1 @@
+select title,name from authors left join books on books.author_id=authors.id;

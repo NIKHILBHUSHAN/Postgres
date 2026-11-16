@@ -1,0 +1,1 @@
+select author_id,count(*) from books group by author_id;

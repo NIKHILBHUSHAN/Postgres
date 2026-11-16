@@ -1,0 +1,1 @@
+select manufacturer,sum(price*units_sold) from phones group by manufacturer having sum(price*units_sold)>2000000;

@@ -1,0 +1,1 @@
+select name,count(*) from books join authors on books.author_id=authors.id group by name;
