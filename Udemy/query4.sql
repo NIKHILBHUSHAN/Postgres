@@ -819,3 +819,25 @@ select (select max(price) from products);
 
 
 select (select max(price) from products)/(select min(price) from products);
+
+select distinct department from products;
+
+select count(distinct department) from products;
+
+select greatest(20,10,30);
+
+select name,weight,greatest(30,2*weight) from products;
+
+
+select least(20,10,30);
+
+select name,price,least(price*0.5,400) from products;
+
+select 
+  name,price,
+  case 
+    when price>600 then 'high'
+    when price>300 then 'medium'
+  else 'cheap' --default is null for else
+  end
+from products;
