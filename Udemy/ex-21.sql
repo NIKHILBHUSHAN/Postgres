@@ -1,0 +1,1 @@
+select name,price from phones where price>(select price from phones where name='S5620 Monte');

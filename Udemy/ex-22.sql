@@ -1,0 +1,1 @@
+select name from phones where price> all (select price from phones where manufacturer='Samsung');
