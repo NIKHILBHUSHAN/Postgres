@@ -1,0 +1,75 @@
+table user{
+  id serial [pk,increment]
+  created_at timestamp
+  updated_at timestamp
+  username varchar(30)
+  bio varchar(400)
+  avatar varchar(200)
+  phone varchar(10)
+  email varchar(25)
+  password varchar(50)
+  status varchar(15)
+}
+
+table posts{
+  id serial [pk,increment]
+  created_at timestamp
+  updated_at timestamp
+  url varchar(200)
+  user_id integer [ref:>user.id]
+  caption varchar(200)
+  lat real
+  lng real
+}
+table comments{
+  id serial [pk,increment]
+  created_at timestamp
+  updated_at timestamp
+  contents varchar(240)
+  user_id integer [ref:>user.id]
+  post_id integer [ref:>posts.id]
+
+}
+table likes{
+  id serial [pk,increment]
+  created_at timestamp
+  user_id integer [ref:>user.id]
+  comment_id integer [ref:>comments.id]
+  post_id integer [ref:>posts.id]
+}
+
+table photo_tag{
+  id serial [pk,increment]
+  created_at timestamp
+  updated_at timestamp
+  post_id integer [ref:>posts.id]
+  user_id integer [ref:>user.id]
+  x integer
+  y integer
+}
+
+table caption_tags{
+  id serial [pk,increment]
+  created_at timestamp
+  post_id integer [ref:>posts.id]
+  user_id integer [ref:>user.id]
+}
+
+table hashtags{
+  id serial [pk,increment]
+  created_at timestamp
+  title varchar(20)
+}
+
+table hashtags_post{
+  id serial [pk,increment]
+  hashtag_id integer [ref:> hashtags.id]
+  post_id integer [ref:> posts.id]
+}
+
+table followers{
+  id serial [pk,increment]
+  created_at timestamp
+  leader_id integer [ref:>user.id]
+  follower_id interger [ref:>user.id]
+}
